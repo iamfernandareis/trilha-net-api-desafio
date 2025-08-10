@@ -4,6 +4,32 @@ www.dio.me
 ## Desafio de projeto
 Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de API e Entity Framework, da trilha .NET da DIO.
 
+## Configuração do SQL Server
+
+Para rodar este projeto corretamente, é necessário ter uma instância do SQL Server em execução e configurar o acesso conforme a string de conexão presente no arquivo `appsettings.Development.json`:
+
+```json
+"ConnectionStrings": {
+  "ConexaoPadrao": "Server=localhost;Database=Organizador;User Id=sa;Password=SuaSenhaForte;TrustServerCertificate=True"
+}
+```
+
+**Passos para configurar:**
+
+1. Instale o SQL Server (pode ser o SQL Server Express, Developer ou via Docker).
+2. Crie um usuário `sa` com a senha definida em `SuaSenhaForte` ou altere a string de conexão para refletir o usuário e senha desejados.
+3. Certifique-se de que o SQL Server está aceitando conexões TCP/IP na porta padrão (1433).
+4. O banco de dados `Organizador` será criado automaticamente ao rodar as migrations, caso não exista.
+5. Para aplicar as migrations e criar as tabelas, execute no terminal do projeto:
+
+   ```sh
+   dotnet ef database update
+   ```
+
+   (Se necessário, instale a ferramenta com `dotnet tool install --global dotnet-ef`.)
+
+6. Caso altere a string de conexão, lembre-se de atualizar o arquivo `appsettings.Development.json`.
+
 ## Contexto
 Você precisa construir um sistema gerenciador de tarefas, onde você poderá cadastrar uma lista de tarefas que permitirá organizar melhor a sua rotina.
 
